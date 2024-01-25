@@ -7,7 +7,6 @@ function Guess({ setGuesses }) {
       className="guess-input-wrapper"
       onSubmit={(event) => {
         event.preventDefault();
-
         // Gjør noe med "guess" her kanskje?
         console.log("You guessed:", guess);
         setGuesses({letters: guess, key: self.crypto.randomUUID()});

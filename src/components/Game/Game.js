@@ -11,10 +11,7 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  const [guesses, setGuesses] = React.useState([
-    { letters: "12345", key: "1" },
-    { letters: "ABCDE", key: "2" },
-  ]);
+  const [guesses, setGuesses] = React.useState([]);
 
   function addGuess(newGuess) {
     setGuesses([...guesses, newGuess])
