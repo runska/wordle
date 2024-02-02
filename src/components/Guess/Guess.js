@@ -1,31 +1,22 @@
 import React from "react";
+import { range } from "../../utils";
+import { checkGuess } from "../../game-helpers";
 
-function Guess({ setGuesses }) {
-  const [guess, setGuess] = React.useState("");
+function Guess({ value, answer }) {
+  const result = checkGuess(value, answer);
+  
   return (
-    <form
-      className="guess-input-wrapper"
-      onSubmit={(event) => {
-        event.preventDefault();
-        // Gjør noe med "guess" her kanskje?
-        console.log("You guessed:", guess);
-        setGuesses({letters: guess, key: self.crypto.randomUUID()});
-        setGuess("")
-      }}
-    >
-      <label htmlFor="guess-input">Enter guess:</label>
-      <input
-        required
-        id="guess-input"
-        type="text"
-        value={guess}
-        pattern="[A-Za-z]{5}"
-        title="Five letter word"
-        onChange={(event) => {
-          setGuess(event.target.value.toUpperCase());
-        }}
-      ></input>
-    </form>
+    <p className="guess">
+      {range(5).map((num) => {
+        const cellStatus = result ? result[num].status : "";
+
+        return (
+          <span className={"cell " + cellStatus} key={num}>
+            {value ? value[num] : undefined}
+          </span>
+        );
+      })}
+    </p>
   );
 }
 
