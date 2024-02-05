@@ -1,6 +1,6 @@
 import React from "react";
 
-function InputGuess({ addToListOfGuesses }) {
+function InputGuess({ addToListOfGuesses, deactivated }) {
   const [guess, setGuess] = React.useState("");
   return (
     <form
@@ -8,12 +8,13 @@ function InputGuess({ addToListOfGuesses }) {
       onSubmit={(event) => {
         event.preventDefault();
         addToListOfGuesses(guess);
-        setGuess("")
+        setGuess("");
       }}
     >
-      <label htmlFor="guess-input">Enter guess:</label>
+      <label htmlFor="guess-i≈nput">Enter guess:</label>
       <input
         required
+        disabled={deactivated}
         id="guess-input"
         type="text"
         value={guess}
